@@ -30,3 +30,49 @@ Created the user `dev-bosh` with console access and deliberately attached no per
 
 ![Dev Bosh No Permissions](./screenshots/Dev-Bosh-No-Permissions.png)
 
+### 3. Authored Custom Least Privilege Policy
+
+Created a custom policy `dev-bosh-readonly-policy` using the JSON policy editor. The policy contains two statements:
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowS3ReadOnlyOnDevBucket",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:ListBucket"
+      ],
+      "Resource": [
+        "arn:aws:s3:::iam-lab-dev-bucket-2532",
+        "arn:aws:s3:::iam-lab-dev-bucket-2532/*"
+      ]
+    }
+  ]
+}
+```
+
+![Custom Policy](./screenshots/Dev-Bosh-Policy1.png) 
+![Custom Policy JSON](./screenshots/Dev-Bosh-Policy2.png) 
+
+### 4. Attached Policy to dev-bosh
+
+Attached `dev-bosh-readonly-policy` directly to the `dev-bosh` user via the Permissions tab.
+
+![Policy Attached](./screenshots/Dev-Bosh-ReadOnly-Permission.png)
+
+### 5. Validated Policy Enforcement
+
+Logged into a separate incognito browser window as `dev-bosh` and tested the following:
+```
+
+| Action | Expected Result | Actual Result |
+|--------|----------------|---------------|
+| Access S3 object directly via URL | Allow | Allowed |
+| Delete file from bucket | Deny | Access Denied |
+```
+![File Access Success](./screenshots/Dev-Bosh-txt-Access.png)
+![File Delete Denied](./screenshots/Dev-Bosh-Permission-Denied.png)
+
