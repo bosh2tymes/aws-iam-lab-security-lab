@@ -21,7 +21,7 @@ All configurations were performed in a live AWS environment using the AWS Manage
 ---
 
 ## Lab Architecture
-
+```
 AWS Account
 ├── Root Account (MFA enforced, locked away)
 ├── IAM Users
@@ -35,8 +35,8 @@ AWS Account
 │   ├── iam-lab-server (role attached, S3 access via temporary credentials)
 │   └── iam-lab-server-norole (no role, no credentials, access denied)
 └── CloudTrail
-└── iam-lab-audit-trail (full management event logging, log file validation enabled)
-
+    └── iam-lab-audit-trail (full management event logging, log file validation enabled)
+```
 ---
 
 ## Modules
