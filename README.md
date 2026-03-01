@@ -26,7 +26,7 @@ AWS Account
 ├── Root Account (MFA enforced, locked away)
 ├── IAM Users
 │   ├── iam-admin (AdministratorAccess, MFA enforced)
-│   └── dev-sarah (custom least privilege S3 read-only policy)
+│   └── dev-bosh (custom least privilege S3 read-only policy)
 ├── IAM Roles
 │   └── ec2-s3-readonly-role (assumed by EC2, temporary credentials)
 ├── S3
