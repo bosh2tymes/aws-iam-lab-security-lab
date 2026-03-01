@@ -76,3 +76,8 @@ Logged into a separate incognito browser window as `dev-bosh` and tested the fol
 ![File Access Success](./screenshots/Dev-Bosh-txt-Access.png)
 ![File Delete Denied](./screenshots/Dev-Bosh-Permission-Denied.png)
 
+## Key Concepts
+
+**Implicit deny:** IAM denies all actions by default. You only write Allow statements, you never need to explicitly deny something unless you are overriding an allow that exists elsewhere.
+
+**Policy testing:** Writing a policy and testing it are equally important. A policy that you believe is restrictive but actually is not provides false security confidence.
